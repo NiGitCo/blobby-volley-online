@@ -1,0 +1,290 @@
+:root {
+  --bg: #12233f;
+  --panel: rgba(255, 255, 255, 0.95);
+  --text: #1b2335;
+  --muted: #5b6478;
+  --red: #d42a27;
+  --blue: #2a56d4;
+  --accent: #f0a020;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+#stage {
+  position: relative;
+  width: min(calc(100vw - 32px), calc((100vh - 56px) * 4 / 3));
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(10, 25, 50, 0.25);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 22px 28px;
+  width: min(460px, 100%);
+  max-height: 100%;
+  overflow: auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.panel.lobby {
+  width: min(560px, 100%);
+}
+
+.panel.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3.4vw, 38px);
+  letter-spacing: 1px;
+  color: var(--red);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
+
+h1 span {
+  color: var(--blue);
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+
+p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.error {
+  color: #b3261e;
+  font-weight: bold;
+}
+
+.notice {
+  background: #fff4d6;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.red {
+  color: var(--red);
+  font-weight: bold;
+}
+
+.blue {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.score {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 4px 0 8px;
+}
+
+button {
+  font: inherit;
+  font-size: 17px;
+  padding: 11px 18px;
+  border-radius: 9px;
+  border: 2px solid #c9d1e0;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.1s, transform 0.05s;
+}
+
+button:hover:not(:disabled) {
+  background: #eef3ff;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: #d08a10;
+  color: #fff;
+  font-weight: bold;
+}
+
+button.primary:hover:not(:disabled) {
+  background: #f5ae35;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #6aa0ff;
+  outline-offset: 2px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.row > button {
+  flex: 1;
+}
+
+.row.link {
+  margin-top: 6px;
+}
+
+.row.link input {
+  flex: 1;
+  min-width: 0;
+}
+
+.row.link button {
+  flex: 0 0 auto;
+}
+
+input[type='text'],
+select {
+  font: inherit;
+  font-size: 17px;
+  padding: 10px 12px;
+  border: 2px solid #c9d1e0;
+  border-radius: 9px;
+  width: 100%;
+  background: #fff;
+  color: var(--text);
+}
+
+#j-code {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+label select {
+  margin-top: 6px;
+  font-weight: normal;
+}
+
+label.check {
+  font-weight: normal;
+}
+
+.seats {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.seats li {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f1f4fa;
+  margin-bottom: 6px;
+}
+
+.countdown {
+  text-align: center;
+}
+
+.countdown .big {
+  font-size: 140px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.banner {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #b3261e;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.banner[hidden] {
+  display: none;
+}
+
+.footer {
+  margin: 0;
+  font-size: 12px;
+  color: #9fb0cf;
+  text-align: center;
+}
+
+.footer a {
+  color: #c8d6f0;
+}

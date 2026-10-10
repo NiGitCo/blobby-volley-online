@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blobby Volley Online</title>
+    <meta name="description" content="Blobby Volley im Browser – online gegen Freunde, lokal zu zweit oder gegen den Computer." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main id="app">
+      <div id="stage">
+        <canvas id="game" width="800" height="600" aria-label="Spielfeld"></canvas>
+        <div id="overlay" class="overlay"></div>
+        <div id="banner" class="banner" hidden></div>
+      </div>
+      <p class="footer">
+        Rot: A / D / W · Blau: Pfeiltasten · Esc: Pause ·
+        Physik &amp; Regeln nach <a href="https://github.com/danielknobe/blobbyvolley2" target="_blank" rel="noopener">Blobby Volley 2</a> (GPL-2.0)
+      </p>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

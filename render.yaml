@@ -1,0 +1,12 @@
+# Render.com blueprint – one free web service that serves the website and the game server
+services:
+  - type: web
+    name: blobby-volley-online
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "22"

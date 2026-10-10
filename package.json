@@ -1,0 +1,27 @@
+{
+  "name": "blobby-volley-online",
+  "version": "1.0.0",
+  "description": "Blobby Volley im Browser mit Online-Multiplayer",
+  "license": "GPL-2.0-or-later",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "vite build && esbuild server/index.ts --bundle --platform=node --target=node18 --format=cjs --packages=external --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx tests/engine.test.ts && tsx tests/online.test.ts"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.25.0",
+    "socket.io-client": "^4.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0"
+  }
+}
